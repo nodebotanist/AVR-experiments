@@ -7,7 +7,7 @@ F_CPU = 1000000UL
 BAUD = 19200UL
 
 # To add a libraries folder
-LIBDIR = .
+LIBDIR = ../lib
 
 #####
 # Programmer Defaults
