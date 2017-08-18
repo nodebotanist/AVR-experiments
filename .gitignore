@@ -1,3 +1,4 @@
 *.hex
 *.map
 *.o
+node_modules
