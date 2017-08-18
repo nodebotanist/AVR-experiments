@@ -7,10 +7,12 @@ int main(void){
   char serialInput;
 
   initSerial();
-  printString("Hello, Kas!");
+  printString("Hello, Kas!\n");
 
   while(1){
     serialInput = receiveByte();
+    printBinaryByte(serialInput);
+    printString("\n");
     transmitByte(serialInput);
   }
 
