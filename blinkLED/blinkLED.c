@@ -1,4 +1,4 @@
-                                                       /* Blinker Demo */
+/* Blinker Demo */
 
 // ------- Preamble -------- //
 #include <avr/io.h>                        /* Defines pins, ports, etc */
