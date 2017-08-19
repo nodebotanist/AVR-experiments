@@ -26,6 +26,7 @@
 * initSerial() -- initializes serial using steps shown above
 * transmitByte() -- transmit byte using steps above
 * recieveByte() -- recieve byte using steps above
+* readString(char string[], uint8_t maxLength) -- read in a string with up to maxLength characters, terminated with \r
 * printString(const char[] string) -- transmits a string
 * printByte(uint8_t byte) -- transmits a byte
 * printBinaryByte(uint8_t byte) -- transmits a byte in binary formatting
