@@ -59,15 +59,20 @@ TODO: util function?
 * Requires external power to AVCC pin (within ~0.6V of VCC)
 * You can apply different reference voltages to get different resolutions
 * ADC needs slower clock-- AVR has prescaler built in, be aware when overclocking!
+  * Max speed for guaranteed 10-bit resolution is 200 kHz
 
 ### Steps
 
 * Set reference voltage to AVCC w/ `ADMUX |= (1 << REFS0)`
 * Set ADC clock prescaler to 8 w/ `ADCSRA |= (1 << ADPS1) | (1 << ADPS0)`
 * Enable ADC w/ `ADCSRA |= (1 << ADEN)`
+  * For free-running mode add:
+    * `ADCSRA |= (1 << ADATE);`
+    * `ADCSRA |= (1 << ADSC);`
 * In event loop:
   * Start ADC conversion w/ `ADSCRA |= ADSC`
   * loop_until_bit_is_clear(ADSCRA, ADSC)
-  * value is in register ADC (uint16_t -- 10 bits!)
+  * value is in register ADC (uint16_t -- 10 bits!) 0 to 1023
+    * can scale down `uint8_t value = ADC_value >> 2 0 to 255
 
 TODO: ADC utils
