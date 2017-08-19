@@ -26,6 +26,11 @@
 * initSerial() -- initializes serial using steps shown above
 * transmitByte() -- transmit byte using steps above
 * recieveByte() -- recieve byte using steps above
+
+## lib/serial-utils.h
+
+This library is for any serial comms that need to be formatted or read. **Depends on serial.h**.
+
 * readString(char string[], uint8_t maxLength) -- read in a string with up to maxLength characters, terminated with \r
 * printString(const char[] string) -- transmits a string
 * printByte(uint8_t byte) -- transmits a byte
