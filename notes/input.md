@@ -76,3 +76,10 @@ TODO: util function?
     * can scale down `uint8_t value = ADC_value >> 2 0 to 255
 
 TODO: ADC utils
+
+### Multiplexing the ADC pins
+
+* ADC has 5 channels, but 1 converter-- must switch channels to use multiple devices
+* to change:
+  * `ADMUX &= 0b11110000;` to clear out channel bits
+  * `ADMUX |= PCx;` to select the new needed channel
