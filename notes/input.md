@@ -52,3 +52,22 @@ uint8_t debounce(void){
 ```
 
 TODO: util function?
+
+## ADC
+
+* Analeg to Digital Converter
+* Requires external power to AVCC pin (within ~0.6V of VCC)
+* You can apply different reference voltages to get different resolutions
+* ADC needs slower clock-- AVR has prescaler built in, be aware when overclocking!
+
+### Steps
+
+* Set reference voltage to AVCC w/ `ADMUX |= (1 << REFS0)`
+* Set ADC clock prescaler to 8 w/ `ADCSRA |= (1 << ADPS1) | (1 << ADPS0)`
+* Enable ADC w/ `ADCSRA |= (1 << ADEN)`
+* In event loop:
+  * Start ADC conversion w/ `ADSCRA |= ADSC`
+  * loop_until_bit_is_clear(ADSCRA, ADSC)
+  * value is in register ADC (uint16_t -- 10 bits!)
+
+TODO: ADC utils
