@@ -30,3 +30,25 @@ int main(void) {
   return(0)
 }
 ```
+
+### Debouncing
+
+```c
+#include <utils/delay.h>
+
+//...
+
+uint8_t debounce(void){
+  if(bit_is_clear(PINx, Pxx)) {
+    _delay_us(1000); // 1 ms
+    if(bit_is_clear(PINx, Pxx)) {
+      return (1); // pressed and debounced
+    }
+  }
+  return (0); // bounce
+}
+ 
+// ...
+```
+
+TODO: util function?
