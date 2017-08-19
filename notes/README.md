@@ -17,4 +17,5 @@ The notes I took while writing these experiments are in here.
   * Digital Input
   * ADC
 * [serial.md](./serial.md)
+  * how serial works in AVR
   * lib/serial
