@@ -81,17 +81,3 @@ void printHexByte(uint8_t byte) {
   nibble = byte & 0b00001111;
   transmitByte(nibbleToHexCharacter(nibble));
 }
-
-uint8_t getNumber(void) {
-  char hundreds = '0';
-  char tens = '0';
-  char ones = '0';
-  char thisChar = '0';
-  do {
-    hundreds = tens;
-    tens = ones;
-    ones = thisChar;
-    thisChar = receiveByte();
-  } while (thisChar != '\r');
-  return (100 * (hundreds - '0') + 10 * (tens - '0') + ones - '0');
-}

@@ -11,7 +11,6 @@ void transmitByte(uint8_t data);
 uint8_t receiveByte(void);
 
 void readString(char string[], uint8_t maxLength);
-uint8_t getNumber(void);
 
 void printString(const char string[]);
 void printByte(uint8_t byte);
