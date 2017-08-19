@@ -10,11 +10,10 @@ void initSerial(void);
 void transmitByte(uint8_t data);
 uint8_t receiveByte(void);
 
-void readString(char myString[], uint8_t maxLength);
+void readString(char string[], uint8_t maxLength);
 uint8_t getNumber(void);
 
-void printString(const char myString[]);
+void printString(const char string[]);
 void printByte(uint8_t byte);
-void printWord(uint16_t word);
 void printBinaryByte(uint8_t byte);
 void printHexByte(uint8_t byte);
