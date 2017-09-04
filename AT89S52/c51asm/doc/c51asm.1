@@ -1,0 +1,198 @@
+.TH C51ASM 1 "31 May 2010" "C51ASM V1.2" "C51ASM Macro Assembler"
+.SH NAME
+c51asm \-  The Atmel\*R MCS-51 macro assembler
+.SH SYNOPSIS
+.B c51asm
+[options] source [options]
+.SS Options:
+[ \fB\-d \fIdataobj\fR ]
+[ \fB\-D \fIsymbol\fR[=\fIvalue\fR[:\fItype\fR]]]
+.br
+[ \fB\-f\fR[\fBB\fR|\fBG\fR|\fBI\fR|\fBM\fR|\fBO\fR]\fR ]
+[ \fB\-g\fR ] [ \fB\-h\fR ]
+.br
+[ \fB\-I \fIdirectory1\fR[:\fIdirectory2\fR[:...]]]
+.br
+[ \fB\-l \fR[\fIlisting\fR] ]
+[ \fB\-o \fIobject\fR ]
+[ \fB\-q\fR ]
+
+.SS More Options:
+[ \fB\-\-columns\fR ]
+[ \fB\-\-datafile \fIdataobj\fR ]
+[ \fB\-\-debug\fR ]
+.br
+[ \fB\-\-define \fIsymbol\fR[=\fIvalue\fR[:\fItype\fR]]]
+.br
+[ \fB\-\-devices\fR ]
+[ \fB\-\-dptr\fR ]
+[ \fB\-\-help\fR ]
+.br
+[ \fB\-\-filetype \fR[\fBBINARY\fR|\fBGENERIC\fR|\fBHEX\fR|\fBINTEL\fR|\fBMOTOROLA\fR|\fBOMF51\fR|\fBSREC\fR]\fR  ]
+.br
+[ \fB\-\-include \fIdirectory1\fR[:\fIdirectory2\fR[:...]]]
+.br
+[ \fB\-\-listfile \fR[\fIlisting\fR] ]
+[ \fB\-\-mapfseg \fIoffset\fR[:\fIstart\fR] ]
+.br
+[ \fB\-\-nolist\fR ]
+[ \fB\-\-noobject\fR ]
+[ \fB\-\-nopaging\fR ]
+.br
+[ \fB\-\-outfile \fIobject\fR ]
+[ \fB\-\-omf-51 \fIomffile\fR ]
+.br
+[ \fB\-\-quiet\fR ]
+[ \fB\-\-version\fR ]
+[ \fB\-\-target \fIdevice\fR ]
+
+.SH DESCRIPTION
+.B c51asm
+is a two\-pass macro assembler for the
+.B Atmel AT89
+family of 8051 microcontrollers.
+.SH FILES
+.B source
+.RS 4
+The MCS-51 assembly source file. Only one source file may be assembled at a time.
+.RE
+.B object
+.RS 4
+The generated assembler output in object file format. 
+When set explicitly with \fI\-o\fR, \fI\-\-outfile\fR, or
+\fI$OBJECT()\fR the file name is left unchanged. 
+When no object file is specified, it is derived from the \fIsource\fR file name 
+with an appropriate extension for the object format.
+.RE
+.B listing
+.RS 4
+The generated assembler listing file. 
+When set explicitly with \fI\-l\fR, \fI\-\-listfile\fR, or
+\fI$PRINT()\fR the file name is left unchanged. When no listing file is specified, 
+it is derived from the \fIsource\fR file name with an ".lst" extension.
+.RE
+.B dataobj
+.RS 4
+The assembler can produce a second object file for initializing nonvolatile data memory. 
+When set explicitly with \fI\-d\fR or \fI\-\-datafile\fR the file name is left unchanged. 
+When no data file is specified, it is derived from the \fIsource\fR file name with an ".dat" extension plus appropriate extension for the object format.
+.RE
+.B omffile
+.RS 4
+The assembler can produce both the standard object file(s) and an OMF object 
+whose name is set explicitly by \fI\-\-omf-51\fR or \fI$DEBUG()\fR.
+
+.SH OPTIONS
+.IP \fB\-\-columns\fR 4
+Print error column information
+
+.IP "\fB\-d \fIdataobj\fR"
+.PD 0
+.IP "\fB\-\-datafile \fIdataobj\fR" 4
+Generate data object called \fIdataobj\fR
+
+.IP \fB\-g\fR
+.PD 0
+.IP \fB\-\-debug\fR 4
+Generate debug information in OMF format
+
+.IP "\fB\-D \fIsymbol\fR[=\fIvalue\fR[:\fItype\fR]]"
+.PD 0
+.IP "\fB\-\-define \fIsymbol\fR[=\fIvalue\fR[:\fItype\fR]]" 4
+Define symbol, optionally with value and type
+
+.IP \fB\-\-devices\fR 4
+List supported devices
+
+.IP \fB\-\-dptr\fR 4
+Enable DPTR mode instruction aliases
+
+.IP \fB\-f\fR[\fBB\fR|\fBG\fR|\fBI\fR|\fBM\fR|\fBO\fR]\fR 
+.PD 0
+.IP "\fB\-\-filetype \fR[\fBBINARY\fR|\fBGENERIC\fR|\fBHEX\fR|\fBINTEL\fR|\fBMOTOROLA\fR|\fBOMF51\fR|\fBSREC\fR]\fR"  4
+Specify the object file format:
+.RS 
+.IP "\fBB BINARY\fR" 18
+Binary image
+.IP "\fBG GENERIC\fR" 18
+Generic hexadecimal (ascii)
+.IP "\fBI HEX INTEL\fR" 18
+Intel Hexadecimal (ascii)
+.IP "\fBM MOTOROLA SREC\fR" 18
+Motorola S-Record (ascii)
+.IP "\fBO OMF51\fR" 18
+Intel Object Module Format (binary)
+.RE
+
+.IP \fB\-h\fR
+.PD 0
+.IP \fB\-\-help\fR 4
+Print usage information
+
+.IP "\fB\-I \fIdirectory1\fR[:\fIdirectory2\fR[:...]]"
+.PD 0
+.IP "\fB\-\-include \fIdirectory1\fR[:\fIdirectory2\fR[:...]]" 4
+Specify one or more additional include directories.
+
+.IP "\fB\-l \fR[\fIlisting\fR]"
+.PD 0
+.IP "\fB\-\-listfile \fR[\fIlisting\fR]" 4
+Generate a listing file, optionally called \fIlisting\fR. If \fIlisting\fR is not
+specified, then the option cannot immediately preceed \fIsource\fR on the command
+line.
+
+.IP "\fB\-\-mapfseg \fIoffset\fR[:\fIstart\fR]" 4
+Remap FSEG location in object file 
+
+.IP \fB\-\-nolist\fR 4
+Supress generation of listing file
+
+.IP \fB\-\-noobject\fR 4
+Supress generation of object file(s)
+
+.IP \fB\-\-nopaging\fR 4
+Disable page formating in the listing file
+
+.IP "\fB\-o \fIobject\fR"
+.PD 0
+.IP "\fB\-\-outfile \fIobject\fR" 4
+Generate object called \fIobject\fR
+
+.IP "\fB\-\-omf-51 \fIomffile\fR" 4
+Generate an OMF object called \fIomffile\fR
+
+.IP \fB\-q\fR
+.PD 0
+.IP \fB\-\-quiet\fR 4
+Suppress all informational messages except errors.
+
+.IP "\fB\-\-target \fIdevice\fR" 4
+Assemble using the specified \fIdevice\fR model.
+
+.IP \fB\-\-version\fR 4
+Display version information only
+
+.SH ENVIRONMENT
+.IP C51ASMINC 4
+Specifies a default search path for include files that are not found in the working directory,
+in the search path specified with the
+.I \-\-include
+option, or with the 
+.I $INCDIR()
+control.
+
+.SH "EXIT STATUS"
+When terminating,
+.B c51asm
+returns one of the following exit codes to the calling process:
+.sp
+.RS 4
+.BR 0 "    no errors"
+.br
+.BR 1 "    program errors detected"
+.br
+.BR 2 "    fatal runtime error"
+.RE
+.SH USAGE
+For more detailed information on writing and assembling MCS-51 assembly language programs, see the
+\fBC51ASM User Manual\fR.

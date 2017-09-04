@@ -1,0 +1,59 @@
+INSTALL - Atmel C51ASM
+
+INSTALL
+-------
+
+C51ASM for Linux is available as a zipped archive. You can download 
+the latest version from http://www.atmel.com. If you already have 
+the archive, perform the following steps to install the software:
+ 
+1. Extract the c51asm_linux_1-1.zip file to the desired installation
+   directory:
+ 
+        > unzip c51asm_linux_1-1.zip -d <install-dir>
+
+	or
+
+	> unzip c51asm_linux_1-1.zip 
+	> mv c51asm <install-dir>
+ 
+2. Set your PATH variable to include the bin/ directory:
+
+	For bash, ksh, and sh shells, insert the following line into 
+	your .profile file:
+ 
+        export PATH=${PATH}:<install-dir>/c51asm/bin
+
+	For csh, tcsh, and zsh shells, insert the following line into 
+	your .login file:
+
+        setenv PATH ${PATH}:<install-dir>/c51asm/bin
+ 
+3. Set the C51ASMINC variable to point to the include/ directory:
+ 
+	For bash, ksh, and sh shells, insert the following line into 
+	your .profile file:
+
+        export C51ASMINC=<install-dir>/c51asm/include
+ 
+	For csh, tcsh, and zsh shells, insert the following line into 
+	your .login file:
+
+        setenv C51ASMINC <install-dir>/c51asm/include
+ 
+If you have root access you can also install C51ASM for all users.
+
+	> unzip c51asm_linux_1-1.zip 
+	> cp c51asm/bin/c51asm /usr/local/bin/
+	> cp c51asm/doc/c51asm.1 /usr/local/share/man/man1/
+	> cp -r c51asm /usr/local/share/
+	> rm -r c51asm
+
+	Create /etc/profile.d/c51asm.sh with the following line:
+
+	export C51ASMINC=/usr/local/share/c51asm/include
+
+	Create /etc/profile.d/c51asm.csh with the following line:
+
+	setenv C51ASMINC /usr/local/share/c51asm/include
+

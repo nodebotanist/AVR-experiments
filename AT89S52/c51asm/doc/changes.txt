@@ -1,0 +1,54 @@
+CHANGES - Atmel C51ASM
+
+
+CHANGES
+-------
+
+Version 1.2; 31 MAY 2011
+=========================
+- Support added for the following devices:
+  AT89LP3240 AT89LP51RB2 
+  AT89LP51RC2 AT89LP51RD2
+  AT89LP51IC2 AT89LP51ID2
+  AT89LP51ED2 AT89LP51
+- Improved handling of address overlaps during code generation.
+
+Version 1.1; 12 OCT 2010
+=========================
+- Support added for AT89LP52
+- Improved handling of device models regarding supported instructions and
+  segment boundaries.
+
+- Known Problems
+  --------------
+* Overlap errors during code generation are not flagged and all code is
+  invalidated up to the next absolute segment.
+
+Version 1.0; 01 SEP 2009
+=========================
+- This version supports the following devices:
+  AT89LP2052 AT89LP4052
+  AT89LP213 AT89LP214 AT89LP216
+  AT89LP428 AT89LP828
+  AT89LP6440
+  AT89S2051 AT89S4051
+  AT89S51 AT89S52 AT89S53 AT89S8252 AT89S8253
+  AT89LS51 AT89LS52
+  AT89C2051 AT89C4051
+  AT89C51 AT89C52 AT89C55WD AT89C51RC
+  AT89C51RB2 AT89C52RC2 AT89C51RD2 AT89C51ED2
+  AT89C51IC2 AT89C51ID2
+- All other devices must use the generic model
+
+- Known Problems
+  --------------
+* When using a device model, the assembled program cannot exceed the internal
+  CODE size even when external program memory (XCODE) is available for that
+  device.
+
+* Instruction extensions do not throw an error when a specified device model
+  does not support them.
+
+* When using a device model, segment upper bounds checking does not occur 
+  with the ORG directive.
+
