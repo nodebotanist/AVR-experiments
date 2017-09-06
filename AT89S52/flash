@@ -1,0 +1,1 @@
+avrdude -c usbasp -p AT89S52 -C avrdude.conf -B 250 -e -U flash:w:file.hex
